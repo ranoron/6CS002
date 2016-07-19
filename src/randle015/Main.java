@@ -23,7 +23,7 @@ public class Main {
   public int[][] grid = new int[7][8];
   public int[][] gg = new int[7][8];
   int mode = -1;
-  int cf;
+  int cf,bonus;
   int score,x,y,count;
   long startTime;
 
@@ -731,7 +731,7 @@ public class Main {
           e.printStackTrace();
         }
         int gap = (int) (now - startTime);
-        int bonus = 60000 - gap;
+         bonus = 60000 - gap;
         score += bonus > 0 ? bonus / 1000 : 0;
         recordTheScore();
         System.out.println("Here is the solution:");
