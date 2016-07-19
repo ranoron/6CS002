@@ -27,6 +27,7 @@ public class Main {
   int score,x,y,count;
   long startTime;
 
+  guessgrid guessgrid=new guessgrid();
   PictureFrame pf = new PictureFrame();
 
   private void generateDominoes() {
@@ -83,19 +84,7 @@ public class Main {
     }
   }
 
-  void collateGuessGrid() {
-    for (int r = 0; r < 7; r++) {
-      for (int c = 0; c < 8; c++) {
-        gg[r][c] = 9;
-      }
-    }
-    for (Domino d : _g) {
-      if (d.placed) {
-        gg[d.hy][d.hx] = d.high;
-        gg[d.ly][d.lx] = d.low;
-      }
-    }
-  }
+
 
   int pg() {
     for (int are = 0; are < 7; are++) {
@@ -386,7 +375,7 @@ public class Main {
         }
         pg();
         generateGuesses();
-        collateGuessGrid();
+        guessgrid.collateGuessGrid();
         mode = 1;
         cf = 0;
         score = 0;
@@ -511,7 +500,7 @@ public class Main {
                 d.place(x2, y2, x, y);
               }
               score += 1000;
-              collateGuessGrid();
+              guessgrid.collateGuessGrid();
               pf.dp.repaint();
             }
             break;
@@ -548,7 +537,7 @@ public class Main {
               gg[lkj.hy][lkj.hx] = 9;
               gg[lkj.ly][lkj.lx] = 9;
               score -= 1000;
-              collateGuessGrid();
+              guessgrid.collateGuessGrid();
               pf.dp.repaint();
             }
             break;
